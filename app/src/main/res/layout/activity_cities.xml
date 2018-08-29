@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".CitiesActivity">
 
+    <ListView
+        android:id="@+id/listCities"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#000000"
+        android:dividerHeight="1dp" />
+
 </android.support.constraint.ConstraintLayout>
