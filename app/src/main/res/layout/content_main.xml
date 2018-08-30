@@ -17,18 +17,44 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
-                android:layout_width="match_parent"
+                android:gravity="left"
+                android:id="@+id/dia1"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="Tarjeta"/>
+                android:textSize="25dp"
+                android:text="Hoy"/>
 
-            <Button
-                android:layout_width="match_parent"
+            <TextView
+                android:gravity="center"
+                android:id="@+id/temperaturaDia1"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="Boton"/>
+                android:textSize="25dp"
+                android:text="12°C"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/temperaturaNoche1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="5°C"/>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
 
         </LinearLayout>
 
@@ -42,18 +68,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/dia2"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Tarjeta"/>
+                android:text="Hoy"/>
 
-            <Button
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/temperaturaDia2"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Boton"/>
+                android:text="12°C"/>
+
+            <TextView
+                android:id="@+id/temperaturaNoche2"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="5°C"/>
 
         </LinearLayout>
 
@@ -67,18 +102,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/dia3"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Tarjeta"/>
+                android:text="Hoy"/>
 
-            <Button
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/temperaturaDia3"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Boton"/>
+                android:text="12°C"/>
+
+            <TextView
+                android:id="@+id/temperaturaNoche3"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="5°C"/>
 
         </LinearLayout>
 
@@ -92,18 +136,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/dia4"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Tarjeta"/>
+                android:text="Hoy"/>
 
-            <Button
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/temperaturaDia4"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Boton"/>
+                android:text="12°C"/>
+
+            <TextView
+                android:id="@+id/temperaturaNoche4"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="5°C"/>
 
         </LinearLayout>
 
@@ -117,18 +170,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/dia5"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Tarjeta"/>
+                android:text="Hoy"/>
 
-            <Button
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/temperaturaDia5"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Boton"/>
+                android:text="12°C"/>
+
+            <TextView
+                android:id="@+id/temperaturaNoche5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="5°C"/>
 
         </LinearLayout>
 
