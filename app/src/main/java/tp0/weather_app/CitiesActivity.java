@@ -1,6 +1,8 @@
 package tp0.weather_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,10 +18,17 @@ public class CitiesActivity extends AppCompatActivity {
 
     ListView listCities;
     ArrayAdapter<String> listAdapter;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editorShared;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //SharedPref para almacenar ciudad seleccionada por usuario
+        sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
+        editorShared = sharedPref.edit();
 
         //Remove notification bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -44,15 +53,16 @@ public class CitiesActivity extends AppCompatActivity {
                 //Object o = listView.getItemAtPosition(position);
                 // Realiza lo que deseas, al recibir clic en el elemento de tu listView determinado por su posicion.
                 Log.i("Click", "click en el elemento " + listAdapter.getItem(position) + " de mi ListView");
-                goMainActivity(listAdapter.getItem(position));
+                editorShared.putString("ciudadSeleccionada", listAdapter.getItem(position));
+                editorShared.apply();
+                goMainActivity();
             }
         });
     }
 
-    private void goMainActivity(String city) {
+    private void goMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra("cityName", city);
         startActivity(intent);
     }
 

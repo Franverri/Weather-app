@@ -1,6 +1,8 @@
 package tp0.weather_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,22 +18,28 @@ import android.view.WindowManager;
 public class MainActivity extends AppCompatActivity {
 
     String title;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editorShared;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //SharedPref para almacenar ciudad seleccionada por usuario
+        sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
+        editorShared = sharedPref.edit();
+
 
         //Remove notification bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //Get city name or put default as title name
-        Intent intent = getIntent();
-        Bundle extras = getIntent().getExtras();
-        if(intent.hasExtra("cityName")){
-            title =  extras.getString("cityName");
-        }else{
+        String strCity = sharedPref.getString("ciudadSeleccionada", "ninguna");
+        if(strCity.equals("ninguna")){
             title = "Buenos Aires";
+        } else {
+            title = strCity;
         }
 
         setContentView(R.layout.activity_main);
