@@ -113,8 +113,6 @@ public class CitiesActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-
-                //Object o = listView.getItemAtPosition(position);
                 // Realiza lo que deseas, al recibir clic en el elemento de tu listView determinado por su posicion.
                 Log.i("Click", "click en el elemento " + listAdapter.getItem(position) + " de mi ListView");
                 editorShared.putString("ciudadSeleccionada", listAdapter.getItem(position));
@@ -128,10 +126,11 @@ public class CitiesActivity extends AppCompatActivity {
         if(strCity.length() < 3){
             etSearch.setError("Debe ingresar al menos 3 caracteres");
         } else {
+            String url = urlAPI + "?filter=" + strCity;
             progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
                     "Recolectando datos...", true);
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
-                    (Request.Method.GET, urlAPI, null, new Response.Listener<JSONArray>() {
+                    (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
                         @Override
                         public void onResponse(JSONArray response) {
