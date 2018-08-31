@@ -77,8 +77,6 @@ public class CitiesActivity extends AppCompatActivity {
                     String strCity = String.valueOf(etSearch.getText());
                     Log.i("Prueba", strCity);
                     hideKeyboard(CitiesActivity.this);
-                    progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
-                            "Recolectando datos...", true);
                     buscarCiudades(strCity);
                     return true;
                 }
@@ -101,8 +99,6 @@ public class CitiesActivity extends AppCompatActivity {
                         String strCity = String.valueOf(etSearch.getText());
                         Log.i("Prueba", strCity);
                         hideKeyboard(CitiesActivity.this);
-                        progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
-                                "Recolectando datos...", true);
                         buscarCiudades(strCity);
                         return true;
                     }
@@ -129,29 +125,35 @@ public class CitiesActivity extends AppCompatActivity {
     }
 
     private void buscarCiudades(String strCity) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
-                (Request.Method.GET, urlAPI, null, new Response.Listener<JSONArray>() {
+        if(strCity.length() < 3){
+            etSearch.setError("Debe ingresar al menos 3 caracteres");
+        } else {
+            progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
+                    "Recolectando datos...", true);
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
+                    (Request.Method.GET, urlAPI, null, new Response.Listener<JSONArray>() {
 
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.i("RESPUESTA","Response: " + response.toString());
-                        progress.dismiss();
-                        Toast.makeText(CitiesActivity.this, "Ciudades actualizadas",
-                                Toast.LENGTH_LONG).show();
-                    }
-                }, new Response.ErrorListener() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            Log.i("RESPUESTA","Response: " + response.toString());
+                            progress.dismiss();
+                            Toast.makeText(CitiesActivity.this, "Ciudades actualizadas",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }, new Response.ErrorListener() {
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i("Error.Response", String.valueOf(error));
-                        progress.dismiss();
-                        Toast.makeText(CitiesActivity.this, "No fue posible conectarse al servidor, por favor intente más tarde",
-                                Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.i("Error.Response", String.valueOf(error));
+                            progress.dismiss();
+                            Toast.makeText(CitiesActivity.this, "No fue posible conectarse al servidor, por favor intente más tarde",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-        // Add the request to the RequestQueue.
-        queue.add(jsonArrayRequest);
+            // Add the request to the RequestQueue.
+            queue.add(jsonArrayRequest);
+        }
     }
 
     private void goMainActivity() {
