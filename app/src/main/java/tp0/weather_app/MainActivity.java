@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress = ProgressDialog.show(MainActivity.this, "Actualizando ciudades",
+                progress = ProgressDialog.show(MainActivity.this, "Actualizando clima",
                         "Recolectando datos...", true);
                 actualizarClima(strCity);
             }
