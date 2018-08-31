@@ -1,5 +1,6 @@
 package tp0.weather_app;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,16 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
 
 public class CitiesActivity extends AppCompatActivity {
 
@@ -27,10 +38,16 @@ public class CitiesActivity extends AppCompatActivity {
     SharedPreferences.Editor editorShared;
     EditText etSearch;
 
+    final String urlAPI = "https://weather-tdp2.herokuapp.com/cities";
+    RequestQueue queue;
+    ProgressDialog progress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        queue = Volley.newRequestQueue(this);
 
         //SharedPref para almacenar ciudad seleccionada por usuario
         sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
@@ -57,6 +74,9 @@ public class CitiesActivity extends AppCompatActivity {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     String strCity = String.valueOf(etSearch.getText());
                     Log.i("Prueba", strCity);
+                    progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
+                            "Recolectando datos...", true);
+                    buscarCiudades(strCity);
                     return true;
                 }
                 return false;
@@ -77,6 +97,9 @@ public class CitiesActivity extends AppCompatActivity {
                     if(event.getRawX() >= (etSearch.getRight() - etSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         String strCity = String.valueOf(etSearch.getText());
                         Log.i("Prueba", strCity);
+                        progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
+                                "Recolectando datos...", true);
+                        buscarCiudades(strCity);
                         return true;
                     }
                 }
@@ -99,6 +122,32 @@ public class CitiesActivity extends AppCompatActivity {
                 goMainActivity();
             }
         });
+    }
+
+    private void buscarCiudades(String strCity) {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
+                (Request.Method.GET, urlAPI, null, new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.i("RESPUESTA","Response: " + response.toString());
+                        progress.dismiss();
+                        Toast.makeText(CitiesActivity.this, "Ciudades actualizadas",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Error.Response", String.valueOf(error));
+                        progress.dismiss();
+                        Toast.makeText(CitiesActivity.this, "No fue posible conectarse al servidor, por favor intente más tarde",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        // Add the request to the RequestQueue.
+        queue.add(jsonArrayRequest);
     }
 
     private void goMainActivity() {
