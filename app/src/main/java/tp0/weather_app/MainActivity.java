@@ -1,5 +1,6 @@
 package tp0.weather_app;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     final String urlAPI = "https://weather-tdp2.herokuapp.com/cities";
     RequestQueue queue;
+    ProgressDialog progress;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editorShared;
@@ -69,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Clima actualizado", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                progress = ProgressDialog.show(MainActivity.this, "Actualizando ciudades",
+                        "Recolectando datos...", true);
                 actualizarClima(strCity);
             }
         });
@@ -83,13 +86,18 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.i("RESPUESTA","Response: " + response.toString());
+                        progress.dismiss();
+                        Toast.makeText(MainActivity.this, "Clima actualizado",
+                                Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("Error.Response", String.valueOf(error));
-
+                        progress.dismiss();
+                        Toast.makeText(MainActivity.this, "No fue posible conectarse al servidor, por favor intente más tarde",
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
