@@ -1,5 +1,6 @@
 package tp0.weather_app;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -74,6 +76,7 @@ public class CitiesActivity extends AppCompatActivity {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     String strCity = String.valueOf(etSearch.getText());
                     Log.i("Prueba", strCity);
+                    hideKeyboard(CitiesActivity.this);
                     progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
                             "Recolectando datos...", true);
                     buscarCiudades(strCity);
@@ -97,6 +100,7 @@ public class CitiesActivity extends AppCompatActivity {
                     if(event.getRawX() >= (etSearch.getRight() - etSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         String strCity = String.valueOf(etSearch.getText());
                         Log.i("Prueba", strCity);
+                        hideKeyboard(CitiesActivity.this);
                         progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
                                 "Recolectando datos...", true);
                         buscarCiudades(strCity);
@@ -171,5 +175,16 @@ public class CitiesActivity extends AppCompatActivity {
                 strCities);
 
         listCities.setAdapter(listAdapter);
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
