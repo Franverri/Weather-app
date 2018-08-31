@@ -7,12 +7,17 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class CitiesActivity extends AppCompatActivity {
 
@@ -20,6 +25,7 @@ public class CitiesActivity extends AppCompatActivity {
     ArrayAdapter<String> listAdapter;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editorShared;
+    EditText etSearch;
 
 
     @Override
@@ -42,6 +48,41 @@ public class CitiesActivity extends AppCompatActivity {
         //Instance of ListView
         listCities = (ListView) findViewById(R.id.listCities);
         addCities();
+
+        //Handle EditText for search with keyboard click
+        etSearch = (EditText) findViewById(R.id.etSearch);
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    String strCity = String.valueOf(etSearch.getText());
+                    Log.i("Prueba", strCity);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        //Handle EditText for search with screen click
+        etSearch.setLongClickable(false);
+        etSearch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (etSearch.getRight() - etSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        String strCity = String.valueOf(etSearch.getText());
+                        Log.i("Prueba", strCity);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
         //Hanlde item of listview click
         listCities.setClickable(true);

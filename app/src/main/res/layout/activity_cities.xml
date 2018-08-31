@@ -6,11 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".CitiesActivity">
 
-    <ListView
-        android:id="@+id/listCities"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="#000000"
-        android:dividerHeight="1dp" />
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:hint="Ingrese el nombre de la ciudad..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:drawableRight="@drawable/ic_action_search_black"/>
+
+        <ListView
+            android:id="@+id/listCities"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#000000"
+            android:dividerHeight="1dp" />
+
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
