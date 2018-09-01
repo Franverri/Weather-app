@@ -31,6 +31,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CitiesActivity extends AppCompatActivity {
 
@@ -138,6 +140,7 @@ public class CitiesActivity extends AppCompatActivity {
                             progress.dismiss();
                             Toast.makeText(CitiesActivity.this, "Ciudades actualizadas",
                                     Toast.LENGTH_LONG).show();
+                            actualizarListaCiudades(response);
                         }
                     }, new Response.ErrorListener() {
 
@@ -152,6 +155,25 @@ public class CitiesActivity extends AppCompatActivity {
 
             // Add the request to the RequestQueue.
             queue.add(jsonArrayRequest);
+        }
+    }
+
+    private void actualizarListaCiudades(JSONArray response) {
+        for (int i = 0; i < response.length(); i++) {
+            JSONObject jsonobject = null;
+            try {
+                jsonobject = response.getJSONObject(i);
+            } catch (JSONException e) {
+                Log.i("JSON","Error al parsear JSON");
+            }
+            try {
+                String idCiudad = jsonobject.getString("id");
+                String nombreCiudad = jsonobject.getString("nombre");
+                Log.i("JSON","ID Ciudad    : " + idCiudad );
+                Log.i("JSON","Nombre Ciudad: " + nombreCiudad);
+            } catch (JSONException e) {
+                Log.i("JSON","Error al obtener datos del JSON");
+            }
         }
     }
 

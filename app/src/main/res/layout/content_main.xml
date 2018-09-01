@@ -17,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="90dp"
             android:orientation="horizontal"
             android:gravity="center">
 
@@ -68,27 +68,44 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="90dp"
             android:orientation="horizontal"
             android:gravity="center">
 
             <TextView
+                android:gravity="left"
                 android:id="@+id/dia2"
-                android:layout_width="50dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:text="Hoy"/>
+                android:textSize="25dp"
+                android:text="Mañana"/>
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/temperaturaDia2"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="12°C"/>
 
-            <TextView
-                android:id="@+id/temperaturaNoche2"
-                android:layout_width="50dp"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/temperaturaNoche2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="5°C"/>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
 
         </LinearLayout>
 
@@ -102,27 +119,44 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="90dp"
             android:orientation="horizontal"
             android:gravity="center">
 
             <TextView
+                android:gravity="left"
                 android:id="@+id/dia3"
-                android:layout_width="50dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="Hoy"/>
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/temperaturaDia3"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="12°C"/>
 
-            <TextView
-                android:id="@+id/temperaturaNoche3"
-                android:layout_width="50dp"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/temperaturaNoche3"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="5°C"/>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
 
         </LinearLayout>
 
@@ -136,27 +170,44 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="90dp"
             android:orientation="horizontal"
             android:gravity="center">
 
             <TextView
+                android:gravity="left"
                 android:id="@+id/dia4"
-                android:layout_width="50dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="Hoy"/>
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/temperaturaDia4"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="12°C"/>
 
-            <TextView
-                android:id="@+id/temperaturaNoche4"
-                android:layout_width="50dp"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/temperaturaNoche4"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="5°C"/>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
 
         </LinearLayout>
 
@@ -170,27 +221,44 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="90dp"
             android:orientation="horizontal"
             android:gravity="center">
 
             <TextView
+                android:gravity="left"
                 android:id="@+id/dia5"
-                android:layout_width="50dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="Hoy"/>
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/temperaturaDia5"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="12°C"/>
 
-            <TextView
-                android:id="@+id/temperaturaNoche5"
-                android:layout_width="50dp"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/temperaturaNoche5"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
                 android:text="5°C"/>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/i01d"/>
 
         </LinearLayout>
 
