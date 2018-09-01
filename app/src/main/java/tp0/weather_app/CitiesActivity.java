@@ -46,6 +46,7 @@ public class CitiesActivity extends AppCompatActivity {
     SharedPreferences.Editor editorShared;
     EditText etSearch;
     List<String> strCities = new ArrayList<String>();
+    boolean coincidencia = false;
 
     final String urlAPI = "https://weather-tdp2.herokuapp.com/cities";
     RequestQueue queue;
@@ -121,16 +122,19 @@ public class CitiesActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+            if(coincidencia == true){
                 // Realiza lo que deseas, al recibir clic en el elemento de tu listView determinado por su posicion.
                 Log.i("Click", "click en el elemento " + listAdapter.getItem(position) + " de mi ListView");
                 editorShared.putString("ciudadSeleccionada", listAdapter.getItem(position));
                 editorShared.apply();
                 goMainActivity();
             }
+
+        }
         });
     }
 
-    private void buscarCiudades(String strCity) {
+    private void buscarCiudades(final String strCity) {
         if(strCity.length() < 3){
             etSearch.setError("Debe ingresar al menos 3 caracteres");
         } else {
@@ -144,6 +148,12 @@ public class CitiesActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONArray response) {
                             Log.i("RESPUESTA","Response: " + response.toString());
+                            if(response.isNull(0)){
+                                strCities.add("No existen coincidencias");
+                                coincidencia = false;
+                            } else {
+                                coincidencia = true;
+                            }
                             progress.dismiss();
                             Toast.makeText(CitiesActivity.this, "Ciudades actualizadas",
                                     Toast.LENGTH_LONG).show();
