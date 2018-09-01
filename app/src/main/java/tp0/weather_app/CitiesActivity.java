@@ -34,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -114,7 +115,9 @@ public class CitiesActivity extends AppCompatActivity {
             }
         });
 
-        //addCities();
+        //Carga inicial vacia
+        strCities.add("Sin resultados");
+        addCities();
 
         //Hanlde item of listview click
         listCities.setClickable(true);
@@ -134,7 +137,7 @@ public class CitiesActivity extends AppCompatActivity {
         });
     }
 
-    private void buscarCiudades(final String strCity) {
+    private void buscarCiudades(String strCity) {
         if(strCity.length() < 3){
             etSearch.setError("Debe ingresar al menos 3 caracteres");
         } else {
@@ -203,18 +206,7 @@ public class CitiesActivity extends AppCompatActivity {
     }
 
     private void addCities() {
-
-        //Obtain cities
-        /*
-        String[] strCities = {
-                "Buenos Aires",
-                "Cordoba",
-                "Santa Fe",
-                "Chubut",
-                "Tucuman"
-        };*/
-
-        Log.i("LISTA", String.valueOf(strCities));
+        //Log.i("LISTA", String.valueOf(strCities));
         listAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 strCities);
