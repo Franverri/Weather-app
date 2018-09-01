@@ -31,6 +31,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     String title;
+    String idCiudad;
 
     final String urlAPI = "https://weather-tdp2.herokuapp.com/cities";
     RequestQueue queue;
@@ -58,8 +59,11 @@ public class MainActivity extends AppCompatActivity {
         final String strCity = sharedPref.getString("ciudadSeleccionada", "ninguna");
         if(strCity.equals("ninguna")){
             title = "Buenos Aires";
+            idCiudad = "3688357";
         } else {
             title = strCity;
+            //Get City ID
+            idCiudad = sharedPref.getString("idCiudad", "ninguna");
         }
 
         setContentView(R.layout.activity_main);

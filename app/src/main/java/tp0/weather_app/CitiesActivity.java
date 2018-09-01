@@ -141,6 +141,7 @@ public class CitiesActivity extends AppCompatActivity {
     }
 
     private void buscarCiudades(String strCity) {
+        strCity = cleanString(strCity);
         if(strCity.length() < 3){
             etSearch.setError("Debe ingresar al menos 3 caracteres");
         } else {
@@ -228,5 +229,11 @@ public class CitiesActivity extends AppCompatActivity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static String cleanString(String texto) {
+        texto = Normalizer.normalize(texto, Normalizer.Form.NFD);
+        texto = texto.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        return texto;
     }
 }
