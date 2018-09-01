@@ -46,6 +46,7 @@ public class CitiesActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editorShared;
     EditText etSearch;
+    List<String> strCodigos = new ArrayList<String>();
     List<String> strCities = new ArrayList<String>();
     boolean coincidencia = false;
 
@@ -127,8 +128,10 @@ public class CitiesActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
             if(coincidencia == true){
                 // Realiza lo que deseas, al recibir clic en el elemento de tu listView determinado por su posicion.
-                Log.i("Click", "click en el elemento " + listAdapter.getItem(position) + " de mi ListView");
+                //Log.i("Click", "click la ciudad " + listAdapter.getItem(position) + " de mi ListView");
+                //Log.i("Click", "click en el codigo " + strCodigos.get(position) + " de mi ListView");
                 editorShared.putString("ciudadSeleccionada", listAdapter.getItem(position));
+                editorShared.putString("idCiudad", strCodigos.get(position));
                 editorShared.apply();
                 goMainActivity();
             }
@@ -141,6 +144,7 @@ public class CitiesActivity extends AppCompatActivity {
         if(strCity.length() < 3){
             etSearch.setError("Debe ingresar al menos 3 caracteres");
         } else {
+            strCodigos.clear();
             strCities.clear();
             String url = urlAPI + "?filter=" + strCity;
             progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
@@ -191,6 +195,7 @@ public class CitiesActivity extends AppCompatActivity {
                 String nombreCiudad = jsonobject.getString("nombre");
                 Log.i("JSON","ID Ciudad    : " + idCiudad );
                 Log.i("JSON","Nombre Ciudad: " + nombreCiudad);
+                strCodigos.add(idCiudad);
                 strCities.add(nombreCiudad);
             } catch (JSONException e) {
                 Log.i("JSON","Error al obtener datos del JSON");
