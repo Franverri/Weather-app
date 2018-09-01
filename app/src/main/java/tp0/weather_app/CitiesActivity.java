@@ -34,6 +34,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class CitiesActivity extends AppCompatActivity {
 
     ListView listCities;
@@ -41,6 +45,7 @@ public class CitiesActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editorShared;
     EditText etSearch;
+    List<String> strCities = new ArrayList<String>();
 
     final String urlAPI = "https://weather-tdp2.herokuapp.com/cities";
     RequestQueue queue;
@@ -68,7 +73,6 @@ public class CitiesActivity extends AppCompatActivity {
 
         //Instance of ListView
         listCities = (ListView) findViewById(R.id.listCities);
-        addCities();
 
         //Handle EditText for search with keyboard click
         etSearch = (EditText) findViewById(R.id.etSearch);
@@ -109,6 +113,8 @@ public class CitiesActivity extends AppCompatActivity {
             }
         });
 
+        //addCities();
+
         //Hanlde item of listview click
         listCities.setClickable(true);
         listCities.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -128,6 +134,7 @@ public class CitiesActivity extends AppCompatActivity {
         if(strCity.length() < 3){
             etSearch.setError("Debe ingresar al menos 3 caracteres");
         } else {
+            strCities.clear();
             String url = urlAPI + "?filter=" + strCity;
             progress = ProgressDialog.show(CitiesActivity.this, "Actualizando ciudades",
                     "Recolectando datos...", true);
@@ -171,10 +178,12 @@ public class CitiesActivity extends AppCompatActivity {
                 String nombreCiudad = jsonobject.getString("nombre");
                 Log.i("JSON","ID Ciudad    : " + idCiudad );
                 Log.i("JSON","Nombre Ciudad: " + nombreCiudad);
+                strCities.add(nombreCiudad);
             } catch (JSONException e) {
                 Log.i("JSON","Error al obtener datos del JSON");
             }
         }
+        addCities();
     }
 
     private void goMainActivity() {
@@ -184,15 +193,18 @@ public class CitiesActivity extends AppCompatActivity {
     }
 
     private void addCities() {
+
         //Obtain cities
+        /*
         String[] strCities = {
                 "Buenos Aires",
                 "Cordoba",
                 "Santa Fe",
                 "Chubut",
                 "Tucuman"
-        };
+        };*/
 
+        Log.i("LISTA", String.valueOf(strCities));
         listAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 strCities);
