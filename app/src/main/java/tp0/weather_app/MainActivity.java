@@ -195,7 +195,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void actualizarClimaSinConexion() {
 
-
+        for (int i = 1; i <= 5; i++) {
+            actualizarTarjetaDia(String.valueOf(i), "-", "-");
+        }
 
     }
 
