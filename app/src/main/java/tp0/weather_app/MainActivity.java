@@ -57,9 +57,6 @@ public class MainActivity extends AppCompatActivity {
         sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
         editorShared = sharedPref.edit();
 
-        //Obtengo dia y hora
-        configurarDiaYHora();
-
         //Remove notification bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -76,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
+
+        //Obtengo dia y hora
+        configurarDiaYHora();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -152,6 +152,15 @@ public class MainActivity extends AppCompatActivity {
                 dia5 = "Jueves, " + calendarNumberDay5 + "/" + calendarMonth5;
                 break;
         }
+
+        TextView tvDia3 = (TextView) findViewById(R.id.dia3);
+        tvDia3.setText(dia3);
+
+        TextView tvDia4 = (TextView) findViewById(R.id.dia4);
+        tvDia4.setText(dia4);
+
+        TextView tvDia5 = (TextView) findViewById(R.id.dia5);
+        tvDia5.setText(dia5);
     }
 
     private void actualizarClima(String idCiudad) {

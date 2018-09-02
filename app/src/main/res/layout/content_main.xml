@@ -26,7 +26,7 @@
                 android:id="@+id/dia1"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="Hoy"/>
 
             <TextView
@@ -34,7 +34,7 @@
                 android:id="@+id/temperaturaDia1"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="12°C"/>
 
             <ImageView
@@ -47,7 +47,7 @@
                 android:id="@+id/temperaturaNoche1"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="5°C"/>
 
             <ImageView
@@ -77,7 +77,7 @@
                 android:id="@+id/dia2"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="Mañana"/>
 
             <TextView
@@ -85,7 +85,7 @@
                 android:id="@+id/temperaturaDia2"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="12°C"/>
 
             <ImageView
@@ -98,7 +98,7 @@
                 android:id="@+id/temperaturaNoche2"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="5°C"/>
 
             <ImageView
@@ -128,7 +128,7 @@
                 android:id="@+id/dia3"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="Hoy"/>
 
             <TextView
@@ -136,7 +136,7 @@
                 android:id="@+id/temperaturaDia3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="12°C"/>
 
             <ImageView
@@ -149,7 +149,7 @@
                 android:id="@+id/temperaturaNoche3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="5°C"/>
 
             <ImageView
@@ -179,7 +179,7 @@
                 android:id="@+id/dia4"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="Hoy"/>
 
             <TextView
@@ -187,7 +187,7 @@
                 android:id="@+id/temperaturaDia4"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="12°C"/>
 
             <ImageView
@@ -200,7 +200,7 @@
                 android:id="@+id/temperaturaNoche4"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="5°C"/>
 
             <ImageView
@@ -230,7 +230,7 @@
                 android:id="@+id/dia5"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="Hoy"/>
 
             <TextView
@@ -238,7 +238,7 @@
                 android:id="@+id/temperaturaDia5"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="12°C"/>
 
             <ImageView
@@ -251,7 +251,7 @@
                 android:id="@+id/temperaturaNoche5"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="5°C"/>
 
             <ImageView
