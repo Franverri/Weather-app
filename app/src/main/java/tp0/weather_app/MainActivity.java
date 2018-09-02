@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,13 +28,14 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
     String title;
     String idCiudad;
 
-    final String urlAPI = "https://weather-tdp2.herokuapp.com/cities";
+    final String urlAPI = "https://weather-tdp2.herokuapp.com/weather/";
     RequestQueue queue;
     ProgressDialog progress;
 
@@ -78,14 +80,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 progress = ProgressDialog.show(MainActivity.this, "Actualizando clima",
                         "Recolectando datos...", true);
-                actualizarClima(strCity);
+                actualizarClima(idCiudad);
             }
         });
     }
 
-    private void actualizarClima(String strCity) {
+    private void actualizarClima(String idCiudad) {
+        String url = urlAPI + idCiudad;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
-                (Request.Method.GET, urlAPI, null, new Response.Listener<JSONArray>() {
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
                     @Override
                     public void onResponse(JSONArray response) {
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                         progress.dismiss();
                         Toast.makeText(MainActivity.this, "Clima actualizado",
                                 Toast.LENGTH_LONG).show();
+                        actualizarTarjetas(response);
                     }
                 }, new Response.ErrorListener() {
 
@@ -128,6 +132,43 @@ public class MainActivity extends AppCompatActivity {
 
         // Add the request to the RequestQueue.
         queue.add(jsonObjectRequest);*/
+    }
+
+    private void actualizarTarjetas(JSONArray response) {
+        for (int i = 0; i < response.length(); i++) {
+            JSONObject jsonobject = null;
+            try {
+                jsonobject = response.getJSONObject(i);
+            } catch (JSONException e) {
+                Log.i("JSON","Error al parsear JSON");
+            }
+            try {
+                String numDia = String.valueOf(i + 1);
+                String tempDia = "";
+                if (!jsonobject.isNull("temp_diurna")){
+                    tempDia = jsonobject.getString("temp_diurna") + "°C";
+                }
+                String tempNoche = jsonobject.getString("temp_nocturna") + "°C";
+                Log.i("JSON","Temperatura Día: " + tempDia);
+                Log.i("JSON","Temperatura Noche: " + tempNoche);
+                actualizarTarjetaDia(numDia,tempDia,tempNoche);
+            } catch (JSONException e) {
+                Log.i("JSON","Error al obtener datos del JSON");
+            }
+        }
+    }
+
+    private void actualizarTarjetaDia(String numDia, String tempDia, String tempNoche) {
+        String id1 = "temperaturaDia" + numDia;
+        int idDia = getResources().getIdentifier(id1,
+                "id", getPackageName());
+        String id2 = "temperaturaNoche" + numDia;
+        int idNoche = getResources().getIdentifier(id2,
+                "id", getPackageName());
+        TextView tvDia = (TextView)findViewById(idDia);
+        TextView tvNoche = (TextView)findViewById(idNoche);
+        tvDia.setText(tempDia);
+        tvNoche.setText(tempNoche);
     }
 
     @Override
