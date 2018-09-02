@@ -185,11 +185,18 @@ public class MainActivity extends AppCompatActivity {
                         progress.dismiss();
                         Toast.makeText(MainActivity.this, "No fue posible conectarse al servidor, por favor intente más tarde",
                                 Toast.LENGTH_LONG).show();
+                        actualizarClimaSinConexion();
                     }
                 });
 
         // Add the request to the RequestQueue.
         queue.add(jsonArrayRequest);
+    }
+
+    private void actualizarClimaSinConexion() {
+
+
+
     }
 
     private void actualizarTarjetas(JSONArray response) {
