@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             title = strCity;
             //Get City ID
             idCiudad = sharedPref.getString("idCiudad", "ninguna");
+            actualizarClima(idCiudad);
         }
 
         setContentView(R.layout.activity_main);
@@ -85,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress = ProgressDialog.show(MainActivity.this, "Actualizando clima",
-                        "Recolectando datos...", true);
                 actualizarClima(idCiudad);
             }
         });
@@ -164,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void actualizarClima(String idCiudad) {
+        progress = ProgressDialog.show(MainActivity.this, "Actualizando clima",
+                "Recolectando datos...", true);
         String url = urlAPI + idCiudad;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -189,27 +190,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Add the request to the RequestQueue.
         queue.add(jsonArrayRequest);
-
-
-        /*
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, urlAPI, null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("RESPUESTA","Response: " + response.toString());
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i("Error.Response", String.valueOf(error));
-
-                    }
-                });
-
-        // Add the request to the RequestQueue.
-        queue.add(jsonObjectRequest);*/
     }
 
     private void actualizarTarjetas(JSONArray response) {
