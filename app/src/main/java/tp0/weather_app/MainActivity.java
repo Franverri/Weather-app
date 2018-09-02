@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.TextView;
 
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     private void actualizarClimaSinConexion() {
 
         for (int i = 1; i <= 5; i++) {
-            actualizarTarjetaDia(String.valueOf(i), "-", "-");
+            actualizarTarjetaDia(String.valueOf(i), "-", "-", false);
         }
 
     }
@@ -218,20 +219,37 @@ public class MainActivity extends AppCompatActivity {
                 String tempNoche = jsonobject.getString("temp_nocturna") + "°C";
                 Log.i("JSON","Temperatura Día: " + tempDia);
                 Log.i("JSON","Temperatura Noche: " + tempNoche);
-                actualizarTarjetaDia(numDia,tempDia,tempNoche);
+                actualizarTarjetaDia(numDia,tempDia,tempNoche, true);
             } catch (JSONException e) {
                 Log.i("JSON","Error al obtener datos del JSON");
             }
         }
     }
 
-    private void actualizarTarjetaDia(String numDia, String tempDia, String tempNoche) {
+    private void actualizarTarjetaDia(String numDia, String tempDia, String tempNoche, boolean conexion) {
         String id1 = "temperaturaDia" + numDia;
         int idDia = getResources().getIdentifier(id1,
                 "id", getPackageName());
         String id2 = "temperaturaNoche" + numDia;
         int idNoche = getResources().getIdentifier(id2,
                 "id", getPackageName());
+
+        if(!conexion){
+            String idImg1 = "imagenDia" + numDia;
+            int idImgDia = getResources().getIdentifier(idImg1,
+                    "id", getPackageName());
+
+            String idImg2 = "imagenNoche" + numDia;
+            int idImgNoche = getResources().getIdentifier(idImg2,
+                    "id", getPackageName());
+
+            //Pongo icono "iempty"
+            ImageView ivDia = (ImageView) findViewById(idImgDia);
+            ImageView ivNoche = (ImageView) findViewById(idImgNoche);
+            ivDia.setImageDrawable(getResources().getDrawable(R.drawable.iempty));
+            ivNoche.setImageDrawable(getResources().getDrawable(R.drawable.iempty));
+        }
+
         TextView tvDia = (TextView)findViewById(idDia);
         TextView tvNoche = (TextView)findViewById(idNoche);
         tvDia.setText(tempDia);

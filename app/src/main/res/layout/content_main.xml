@@ -38,6 +38,7 @@
                 android:text="12°C"/>
 
             <ImageView
+                android:id="@+id/imagenDia1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -51,7 +52,7 @@
                 android:text="5°C"/>
 
             <ImageView
-
+                android:id="@+id/imagenNoche1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -89,6 +90,7 @@
                 android:text="12°C"/>
 
             <ImageView
+                android:id="@+id/imagenDia2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -102,7 +104,7 @@
                 android:text="5°C"/>
 
             <ImageView
-
+                android:id="@+id/imagenNoche2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -140,6 +142,7 @@
                 android:text="12°C"/>
 
             <ImageView
+                android:id="@+id/imagenDia3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -153,7 +156,7 @@
                 android:text="5°C"/>
 
             <ImageView
-
+                android:id="@+id/imagenNoche3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -191,6 +194,7 @@
                 android:text="12°C"/>
 
             <ImageView
+                android:id="@+id/imagenDia4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -204,7 +208,7 @@
                 android:text="5°C"/>
 
             <ImageView
-
+                android:id="@+id/imagenNoche4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -242,6 +246,7 @@
                 android:text="12°C"/>
 
             <ImageView
+                android:id="@+id/imagenDia5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
@@ -255,7 +260,7 @@
                 android:text="5°C"/>
 
             <ImageView
-
+                android:id="@+id/imagenNoche5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/i01d"/>
