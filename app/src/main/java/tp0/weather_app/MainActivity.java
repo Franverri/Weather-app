@@ -30,10 +30,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     String title;
     String idCiudad;
+
+    String dia3, dia4, dia5;
+    int horas, minutos;
 
     final String urlAPI = "https://weather-tdp2.herokuapp.com/weather/";
     RequestQueue queue;
@@ -52,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
         editorShared = sharedPref.edit();
 
+        //Obtengo dia y hora
+        configurarDiaYHora();
 
         //Remove notification bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -83,6 +90,68 @@ public class MainActivity extends AppCompatActivity {
                 actualizarClima(idCiudad);
             }
         });
+    }
+
+    private void configurarDiaYHora() {
+
+        Calendar calendar = Calendar.getInstance();
+        int calendarDay = calendar.get(Calendar.DAY_OF_WEEK);
+
+        calendar.add(Calendar.DATE, 2);
+        int calendarNumberDay3 = calendar.get(Calendar.DAY_OF_MONTH);
+        int calendarMonth3 = calendar.get(Calendar.MONTH) + 1;
+
+        calendar.add(Calendar.DATE, 1);
+        int calendarNumberDay4 = calendar.get(Calendar.DAY_OF_MONTH);
+        int calendarMonth4 = calendar.get(Calendar.MONTH) + 1;
+
+        calendar.add(Calendar.DATE, 1);
+        int calendarNumberDay5 = calendar.get(Calendar.DAY_OF_MONTH);
+        int calendarMonth5 = calendar.get(Calendar.MONTH) + 1;
+
+        switch (calendarDay) {
+            case Calendar.MONDAY:
+                dia3 = "Miércoles, " + calendarNumberDay3 + "/" + calendarMonth3;
+                dia4 = "Jueves, " + calendarNumberDay4 + "/" + calendarMonth4;
+                dia5 = "Viernes, " + calendarNumberDay5 + "/" + calendarMonth5;
+                break;
+
+            case Calendar.TUESDAY:
+                dia3 = "Jueves, " + calendarNumberDay3 + "/" + calendarMonth3;
+                dia4 = "Viernes, " + calendarNumberDay4 + "/" + calendarMonth4;
+                dia5 = "Sábado, " + calendarNumberDay5 + "/" + calendarMonth5;
+                break;
+
+            case Calendar.WEDNESDAY:
+                dia3 = "Viernes, " + calendarNumberDay3 + "/" + calendarMonth3;
+                dia4 = "Sábado, " + calendarNumberDay4 + "/" + calendarMonth4;
+                dia5 = "Domingo, " + calendarNumberDay5 + "/" + calendarMonth5;
+                break;
+
+            case Calendar.THURSDAY:
+                dia3 = "Sábado, " + calendarNumberDay3 + "/" + calendarMonth3;
+                dia4 = "Domingo, " + calendarNumberDay4 + "/" + calendarMonth4;
+                dia5 = "Lunes, " + calendarNumberDay5 + "/" + calendarMonth5;
+                break;
+
+            case Calendar.FRIDAY:
+                dia3 = "Domingo, " + calendarNumberDay3 + "/" + calendarMonth3;
+                dia4 = "Lunes, " + calendarNumberDay4 + "/" + calendarMonth4;
+                dia5 = "Martes, " + calendarNumberDay5 + "/" + calendarMonth5;
+                break;
+
+            case Calendar.SATURDAY:
+                dia3 = "Lunes, " + calendarNumberDay3 + "/" + calendarMonth3;
+                dia4 = "Martes, " + calendarNumberDay4 + "/" + calendarMonth4;
+                dia5 = "Miércoles, " + calendarNumberDay5 + "/" + calendarMonth5;
+                break;
+
+            case Calendar.SUNDAY:
+                dia3 = "Martes, " + calendarNumberDay3 + "/" + calendarMonth3;
+                dia4 = "Miércoles, " + calendarNumberDay4 + "/" + calendarMonth4;
+                dia5 = "Jueves, " + calendarNumberDay5 + "/" + calendarMonth5;
+                break;
+        }
     }
 
     private void actualizarClima(String idCiudad) {
