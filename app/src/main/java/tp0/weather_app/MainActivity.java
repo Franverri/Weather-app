@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("JSON","Temperatura Día: " + tempDia);
                 Log.i("JSON","Temperatura Noche: " + tempNoche);
                 String code = jsonobject.getString("estado_dia");
-                if (code == "undefined"){
+                if (code.contentEquals("undefined")){
                     code = "empty";
                 }
                 String iconDia = "i" + code;
