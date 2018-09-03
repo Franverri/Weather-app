@@ -1,272 +1,391 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
-
-    <android.support.v7.widget.CardView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tarjeta1"
+    <LinearLayout
+        android:paddingTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tarjeta1"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:gravity="left"
-                android:id="@+id/dia1"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Hoy"/>
-
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:id="@+id/temperaturaDia1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="12°C"/>
+                android:layout_weight="3">
 
-            <ImageView
-                android:id="@+id/imagenDia1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
+                <TextView
+                    android:gravity="left"
+                    android:id="@+id/dia1"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Hoy"/>
 
-            <TextView
-                android:gravity="center"
-                android:id="@+id/temperaturaNoche1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="5°C"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/colorDayBackground">
 
-            <ImageView
-                android:id="@+id/imagenNoche1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/temperaturaDia1"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorDayFont"/>
 
-    </android.support.v7.widget.CardView>
+                    <ImageView
+                        android:id="@+id/imagenDia1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
 
-    <android.support.v7.widget.CardView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tarjeta2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/colorNightBackground">
 
-        <LinearLayout
+                    <TextView
+                        android:id="@+id/temperaturaNoche1"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorNightFont"/>
+
+                    <ImageView
+                        android:id="@+id/imagenNoche1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tarjeta2"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:gravity="left"
-                android:id="@+id/dia2"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Mañana"/>
-
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:id="@+id/temperaturaDia2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="12°C"/>
+                android:layout_weight="3">
 
-            <ImageView
-                android:id="@+id/imagenDia2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
+                <TextView
+                    android:gravity="left"
+                    android:id="@+id/dia2"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Mañana"/>
 
-            <TextView
-                android:gravity="center"
-                android:id="@+id/temperaturaNoche2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="5°C"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/colorDayBackground">
 
-            <ImageView
-                android:id="@+id/imagenNoche2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/temperaturaDia2"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorDayFont"/>
 
-    </android.support.v7.widget.CardView>
+                    <ImageView
+                        android:id="@+id/imagenDia2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
 
-    <android.support.v7.widget.CardView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tarjeta3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/colorNightBackground">
 
-        <LinearLayout
+                    <TextView
+                        android:id="@+id/temperaturaNoche2"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorNightFont"/>
+
+                    <ImageView
+                        android:id="@+id/imagenNoche2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tarjeta3"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:gravity="left"
-                android:id="@+id/dia3"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Hoy"/>
-
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:id="@+id/temperaturaDia3"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="12°C"/>
+                android:layout_weight="3">
 
-            <ImageView
-                android:id="@+id/imagenDia3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
+                <TextView
+                    android:gravity="left"
+                    android:id="@+id/dia3"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Hoy"/>
 
-            <TextView
-                android:gravity="center"
-                android:id="@+id/temperaturaNoche3"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="5°C"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/colorDayBackground">
 
-            <ImageView
-                android:id="@+id/imagenNoche3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/temperaturaDia3"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorDayFont"/>
 
-    </android.support.v7.widget.CardView>
+                    <ImageView
+                        android:id="@+id/imagenDia3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
 
-    <android.support.v7.widget.CardView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tarjeta4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/colorNightBackground">
 
-        <LinearLayout
+                    <TextView
+                        android:id="@+id/temperaturaNoche3"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorNightFont"/>
+
+                    <ImageView
+                        android:id="@+id/imagenNoche3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tarjeta4"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:gravity="left"
-                android:id="@+id/dia4"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Hoy"/>
-
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:id="@+id/temperaturaDia4"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="12°C"/>
+                android:layout_weight="3">
 
-            <ImageView
-                android:id="@+id/imagenDia4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
+                <TextView
+                    android:gravity="left"
+                    android:id="@+id/dia4"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Hoy"/>
 
-            <TextView
-                android:gravity="center"
-                android:id="@+id/temperaturaNoche4"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="5°C"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/colorDayBackground">
 
-            <ImageView
-                android:id="@+id/imagenNoche4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/temperaturaDia4"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorDayFont"/>
 
-    </android.support.v7.widget.CardView>
+                    <ImageView
+                        android:id="@+id/imagenDia4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
 
-    <android.support.v7.widget.CardView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tarjeta5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/colorNightBackground">
 
-        <LinearLayout
+                    <TextView
+                        android:id="@+id/temperaturaNoche4"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorNightFont"/>
+
+                    <ImageView
+                        android:id="@+id/imagenNoche4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tarjeta5"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:gravity="left"
-                android:id="@+id/dia5"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Hoy"/>
-
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:id="@+id/temperaturaDia5"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="12°C"/>
+                android:layout_weight="3">
 
-            <ImageView
-                android:id="@+id/imagenDia5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
+                <TextView
+                    android:gravity="left"
+                    android:id="@+id/dia5"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Hoy"/>
 
-            <TextView
-                android:gravity="center"
-                android:id="@+id/temperaturaNoche5"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="5°C"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/colorDayBackground">
 
-            <ImageView
-                android:id="@+id/imagenNoche5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/i01d"/>
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/temperaturaDia5"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorDayFont"/>
 
-    </android.support.v7.widget.CardView>
+                    <ImageView
+                        android:id="@+id/imagenDia5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
 
-</LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/colorNightBackground">
+
+                    <TextView
+                        android:id="@+id/temperaturaNoche5"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="-"
+                        android:textColor="@color/colorNightFont"/>
+
+                    <ImageView
+                        android:id="@+id/imagenNoche5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="90dp"
+                        android:src="@drawable/iempty"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>
