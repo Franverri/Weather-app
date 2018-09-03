@@ -212,15 +212,18 @@ public class MainActivity extends AppCompatActivity {
             }
             try {
                 String numDia = String.valueOf(i + 1);
-                String tempDia = "";
+                String tempDia = "-";
                 if (!jsonobject.isNull("temp_diurna")){
                     tempDia = jsonobject.getString("temp_diurna") + "°C";
                 }
                 String tempNoche = jsonobject.getString("temp_nocturna") + "°C";
                 Log.i("JSON","Temperatura Día: " + tempDia);
                 Log.i("JSON","Temperatura Noche: " + tempNoche);
-
-                String iconDia = "i" + jsonobject.getString("estado_dia");
+                String code = jsonobject.getString("estado_dia");
+                if (code == "undefined"){
+                    code = "empty";
+                }
+                String iconDia = "i" + code;
                 String iconNoche = "i" + jsonobject.getString("estado_noche");
                 Log.i("JSON","Icono dia: " + iconDia);
                 Log.i("JSON","Icono Noche: " + iconNoche);

@@ -141,7 +141,9 @@ public class CitiesActivity extends AppCompatActivity {
     }
 
     private void buscarCiudades(String strCity) {
+        Log.i("JSON","uncleaned string: " + strCity);
         strCity = cleanString(strCity);
+        Log.i("JSON","cleaned string: " + strCity);
         if(strCity.length() < 3){
             etSearch.setError("Debe ingresar al menos 3 caracteres");
         } else {
@@ -234,6 +236,7 @@ public class CitiesActivity extends AppCompatActivity {
     public static String cleanString(String texto) {
         texto = Normalizer.normalize(texto, Normalizer.Form.NFD);
         texto = texto.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        texto = texto.replaceAll("(\\s|-)", "+"); //Remplazar espacios por +
         return texto;
     }
 }
