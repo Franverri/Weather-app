@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     private void actualizarClimaSinConexion() {
 
         for (int i = 1; i <= 5; i++) {
-            actualizarTarjetaDia(String.valueOf(i), "-", "-", false);
+            actualizarTarjetaDia(String.valueOf(i), "-", "-", "emptyicon", "emptyicon", false);
         }
 
     }
@@ -219,14 +219,20 @@ public class MainActivity extends AppCompatActivity {
                 String tempNoche = jsonobject.getString("temp_nocturna") + "°C";
                 Log.i("JSON","Temperatura Día: " + tempDia);
                 Log.i("JSON","Temperatura Noche: " + tempNoche);
-                actualizarTarjetaDia(numDia,tempDia,tempNoche, true);
+
+                String iconDia = "i" + jsonobject.getString("estado_dia");
+                String iconNoche = "i" + jsonobject.getString("estado_noche");
+                Log.i("JSON","Icono dia: " + iconDia);
+                Log.i("JSON","Icono Noche: " + iconNoche);
+
+                actualizarTarjetaDia(numDia,tempDia,tempNoche, iconDia, iconNoche, true);
             } catch (JSONException e) {
                 Log.i("JSON","Error al obtener datos del JSON");
             }
         }
     }
 
-    private void actualizarTarjetaDia(String numDia, String tempDia, String tempNoche, boolean conexion) {
+    private void actualizarTarjetaDia(String numDia, String tempDia, String tempNoche, String iconDia, String iconNoche, boolean conexion) {
         String id1 = "temperaturaDia" + numDia;
         int idDia = getResources().getIdentifier(id1,
                 "id", getPackageName());
@@ -234,20 +240,28 @@ public class MainActivity extends AppCompatActivity {
         int idNoche = getResources().getIdentifier(id2,
                 "id", getPackageName());
 
+        String idImg1 = "imagenDia" + numDia;
+        int idImgDia = getResources().getIdentifier(idImg1,
+                "id", getPackageName());
+
+        String idImg2 = "imagenNoche" + numDia;
+        int idImgNoche = getResources().getIdentifier(idImg2,
+                "id", getPackageName());
+
+        ImageView ivDia = (ImageView) findViewById(idImgDia);
+        ImageView ivNoche = (ImageView) findViewById(idImgNoche);
+
         if(!conexion){
-            String idImg1 = "imagenDia" + numDia;
-            int idImgDia = getResources().getIdentifier(idImg1,
-                    "id", getPackageName());
-
-            String idImg2 = "imagenNoche" + numDia;
-            int idImgNoche = getResources().getIdentifier(idImg2,
-                    "id", getPackageName());
-
             //Pongo icono "iempty"
-            ImageView ivDia = (ImageView) findViewById(idImgDia);
-            ImageView ivNoche = (ImageView) findViewById(idImgNoche);
             ivDia.setImageDrawable(getResources().getDrawable(R.drawable.iempty));
             ivNoche.setImageDrawable(getResources().getDrawable(R.drawable.iempty));
+        } else {
+            int idIconDia = getResources().getIdentifier(iconDia,
+                    "drawable", getPackageName());
+            int idIconNoche = getResources().getIdentifier(iconNoche,
+                    "drawable", getPackageName());
+            ivDia.setImageDrawable(getResources().getDrawable(idIconDia));
+            ivNoche.setImageDrawable(getResources().getDrawable(idIconNoche));
         }
 
         TextView tvDia = (TextView)findViewById(idDia);
